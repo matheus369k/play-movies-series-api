@@ -11,10 +11,10 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-app.get('/hearth', (req, res) => {
-  return res.send({ status: 'ok' })
+app.get('/hearth', (_, res) => {
+  return res.send({
+    status: 'ok',
+  })
 })
 
-app.listen({ port: env.PORT }, () => {
-  console.log('Serve running..')
-})
+app.listen({ port: env.PORT })
