@@ -5,6 +5,7 @@ import {
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import { env } from '@/util/env'
+import { routeCreateUser, routeLoginUser, routeProfileUser } from './routes'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -16,5 +17,9 @@ app.get('/hearth', (_, res) => {
     status: 'ok',
   })
 })
+
+app.register(routeCreateUser)
+app.register(routeLoginUser)
+app.register(routeProfileUser)
 
 app.listen({ port: env.PORT })

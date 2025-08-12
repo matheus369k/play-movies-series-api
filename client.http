@@ -1,0 +1,28 @@
+# Variable
+@base=http://localhost:3333
+
+### Read Hearth
+GET {{base}}/hearth
+
+### Create user
+POST {{base}}/users/register
+Content-Type: application/json
+
+{
+  "name": "Matheus",
+  "email": "ghome@gmail.com",
+  "password": "Matheus123"
+}
+
+### Login user
+POST {{base}}/users/login
+Content-Type: application/json
+
+{
+  "email": "ghome@gmail.com",
+  "password": "Matheus123"
+}
+
+### Profile User
+GET {{base}}/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhNWUxNWJiLTFjYzQtNDkzNy1iZTA2LWY2NWJhZDdhNmMyZiIsImlhdCI6MTc1NTAzNTY3MX0.vRqkLuPdh5FOSA_q5FFXmj1zJASaIlge3OGMXr_BjM0

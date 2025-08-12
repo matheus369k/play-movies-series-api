@@ -20,6 +20,17 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "/node_modules/",
+    "/dist/"
+  ],
+  "ts-node": {
+    "files": true
   }
 }
