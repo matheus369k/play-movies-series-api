@@ -8,6 +8,13 @@
       "when": 1754948567575,
       "tag": "0000_polite_bucky",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1755206785919,
+      "tag": "0001_funny_oracle",
+      "breakpoints": true
     }
   ]
 }

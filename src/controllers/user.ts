@@ -1,10 +1,14 @@
 import bcrypt from 'bcrypt'
 import { eq } from 'drizzle-orm'
+import jwt from 'jsonwebtoken'
 import { db } from '@/drizzle/client'
 import { schema } from '@/drizzle/schema'
-import jwt from 'jsonwebtoken'
+import {
+  BadRequestError,
+  ServerError,
+  UnAuthorizationError,
+} from '@/middlewares/error'
 import { env } from '@/util/env'
-import { BadRequestError, ServerError } from '@/middlewares/error'
 
 interface UserControllerType {
   name: string
@@ -67,6 +71,33 @@ export class UserController {
     return {
       user: userLogin,
       token,
+    }
+  }
+
+  async userUpdate({
+    name,
+    avatar,
+    userId,
+  }: Pick<UserControllerType, 'name'> & {
+    userId: string | undefined
+    avatar: string
+  }) {
+    if (!userId) {
+      throw new UnAuthorizationError('user not authorization')
+    }
+
+    const user = await db
+      .update(schema.users)
+      .set({ name, avatar: avatar || null })
+      .where(eq(schema.users.id, userId))
+      .returning()
+
+    if (!user[0]) {
+      throw new ServerError('Error to try update user')
+    }
+
+    return {
+      user: user[0],
     }
   }
 }

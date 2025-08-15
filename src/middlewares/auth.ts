@@ -32,7 +32,7 @@ export class AuthMiddleware {
         id: schema.users.id,
         name: schema.users.name,
         email: schema.users.email,
-        profileImage: schema.users.profileImage,
+        avatar: schema.users.avatar,
         createAt: schema.users.createAt,
       })
       .from(schema.users)

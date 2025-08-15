@@ -1,10 +1,14 @@
 # Variable
 @base=http://localhost:3333
+@useId={{LoginUser.response.body.user.id}}
+@token={{LoginUser.response.body.token}}
 
 ### Read Hearth
+# @name CheckHearth
 GET {{base}}/hearth
 
 ### Create user
+# @name CreateUser
 POST {{base}}/users/register
 Content-Type: application/json
 
@@ -15,6 +19,7 @@ Content-Type: application/json
 }
 
 ### Login user
+# @name LoginUser
 POST {{base}}/users/login
 Content-Type: application/json
 
@@ -23,6 +28,25 @@ Content-Type: application/json
   "password": "Matheus123"
 }
 
-### Profile User
+### Profile user
+# @name ProfileUser
 GET {{base}}/users/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhNWUxNWJiLTFjYzQtNDkzNy1iZTA2LWY2NWJhZDdhNmMyZiIsImlhdCI6MTc1NTAzNTY3MX0.vRqkLuPdh5FOSA_q5FFXmj1zJASaIlge3OGMXr_BjM0
+Authorization: Bearer {{token}}
+
+### Update user
+# @name UpdateUserPhoto
+PATCH {{base}}/users/update
+Content-Type: multipart/form-data; boundary=----separate
+Authorization: Bearer {{token}}
+
+------separate
+Content-Disposition: form-data; name="file"; filename="paimon.png"
+Content-Type: image/png
+
+< ./paimon.png
+------separate
+Content-Disposition: form-data; name="name"
+
+matheus
+------separate--
+

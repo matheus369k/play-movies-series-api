@@ -2,6 +2,7 @@ import type { FastifyPluginCallbackZod } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { UserController } from '@/controllers/user'
 import { AuthMiddleware } from '@/middlewares/auth'
+import { UploadMiddleware } from '@/middlewares/upload'
 
 export const routeCreateUser: FastifyPluginCallbackZod = (app) => {
   app.post(
@@ -62,6 +63,28 @@ export const routeProfileUser: FastifyPluginCallbackZod = (app) => {
     (req, res) => {
       return res.status(200).send({
         user: req.user,
+      })
+    }
+  )
+}
+
+export const routeUpdateUser: FastifyPluginCallbackZod = (app) => {
+  app.patch(
+    '/users/update',
+    {
+      preHandler: [
+        new AuthMiddleware().userAuth,
+        new UploadMiddleware().uploads.single('file'),
+      ],
+    },
+    async (req, res) => {
+      const { user } = await new UserController().userUpdate({
+        userId: req.user.id,
+        name: (req.body as unknown as { name: string }).name,
+        avatar: (req.file as unknown as { path: string }).path,
+      })
+      return res.status(201).send({
+        user,
       })
     }
   )
