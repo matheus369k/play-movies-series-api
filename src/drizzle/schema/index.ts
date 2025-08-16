@@ -1,7 +1,7 @@
-import { watchLater } from './medias'
 import { users } from './users'
+import { watchLaterMedias } from './watchLaterMedias'
 
 export const schema = {
   users,
-  watchLater,
+  watchLaterMedias,
 }

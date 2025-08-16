@@ -15,6 +15,13 @@
       "when": 1755206785919,
       "tag": "0001_funny_oracle",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755376312950,
+      "tag": "0002_flippant_photon",
+      "breakpoints": true
     }
   ]
 }

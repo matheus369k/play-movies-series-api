@@ -2,6 +2,7 @@
 @base=http://localhost:3333
 @useId={{LoginUser.response.body.user.id}}
 @token={{LoginUser.response.body.token}}
+@movieId={{GetAllWatchLaterMedias.response.body.watchLaterMedias[0].MovieId}}
 
 ### Read Hearth
 # @name CheckHearth
@@ -49,4 +50,33 @@ Content-Disposition: form-data; name="name"
 
 matheus
 ------separate--
+
+### Create Watch Later Medias
+# @name CreateWatchLaterMedia
+POST {{base}}/watch-later
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "MovieId": "tt93835",
+  "image": "http://localhost:5679/exemple.com/movie.png",
+  "title": "Transformers: The Last Of the Knight",
+  "release": 2017,
+  "type": "movie"
+}
+
+### Get All Watch Later Medias
+# @name GetAllWatchLaterMedias
+GET {{base}}/watch-later
+Authorization: Bearer {{token}}
+
+### Get Watch Later Media
+# @name GetWatchLaterMedia
+GET {{base}}/watch-later/{{movieId}}
+Authorization: Bearer {{token}}
+
+### Delete Watch Later Media
+# @name DeleteWatchLaterMedia
+DELETE {{base}}/watch-later/{{movieId}}
+Authorization: Bearer {{token}}
 

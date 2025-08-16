@@ -14,7 +14,13 @@ import {
   routeLoginUser,
   routeProfileUser,
   routeUpdateUser,
-} from './routes'
+} from './routes/user'
+import {
+  routeCreateWatchLaterMedia,
+  routeDeleteWatchLaterMedia,
+  routeGetAllWatchLaterMedias,
+  routeGetWatchLaterMedia,
+} from './routes/watchLaterMedias'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -40,5 +46,10 @@ app.register(routeCreateUser)
 app.register(routeLoginUser)
 app.register(routeProfileUser)
 app.register(routeUpdateUser)
+
+app.register(routeCreateWatchLaterMedia)
+app.register(routeGetAllWatchLaterMedias)
+app.register(routeGetWatchLaterMedia)
+app.register(routeDeleteWatchLaterMedia)
 
 app.listen({ port: env.PORT })
