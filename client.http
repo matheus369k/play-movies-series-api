@@ -2,7 +2,7 @@
 @base=http://localhost:3333
 @useId={{LoginUser.response.body.user.id}}
 @token={{LoginUser.response.body.token}}
-@movieId={{GetAllWatchLaterMedias.response.body.watchLaterMedias[0].MovieId}}
+@movieId={{GetAllWatchLaterMedias.response.body.watchLaterMedias[1].MovieId}}
 
 ### Read Hearth
 # @name CheckHearth
@@ -58,10 +58,10 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "MovieId": "tt93835",
+  "MovieId": "tt93485",
   "image": "http://localhost:5679/exemple.com/movie.png",
-  "title": "Transformers: The Last Of the Knight",
-  "release": 2017,
+  "title": "Ice Dragons",
+  "release": 2007,
   "type": "movie"
 }
 
@@ -79,4 +79,31 @@ Authorization: Bearer {{token}}
 # @name DeleteWatchLaterMedia
 DELETE {{base}}/watch-later/{{movieId}}
 Authorization: Bearer {{token}}
+
+### Create Assessment Media
+# @name CreateAssessmentMedia
+POST {{base}}/assessment/{{movieId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "liked": true,
+  "unlike": false
+}
+
+### Get Assessment Media
+# @name GetAssessmentMedia
+GET {{base}}/assessment/{{movieId}}
+Authorization: Bearer {{token}}
+
+### Update Assessment Media
+# @name UpdateAssessmentMedia
+PATCH  {{base}}/assessment/{{movieId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "liked": true,
+  "unlike": false
+}
 

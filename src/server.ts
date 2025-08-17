@@ -21,6 +21,11 @@ import {
   routeGetAllWatchLaterMedias,
   routeGetWatchLaterMedia,
 } from './routes/watchLaterMedias'
+import {
+  routeUpdateAssessmentMedia,
+  routeCreateAssessmentMedia,
+  routeGetAssessmentMedia,
+} from './routes/assessmentMedia'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -51,5 +56,9 @@ app.register(routeCreateWatchLaterMedia)
 app.register(routeGetAllWatchLaterMedias)
 app.register(routeGetWatchLaterMedia)
 app.register(routeDeleteWatchLaterMedia)
+
+app.register(routeCreateAssessmentMedia)
+app.register(routeGetAssessmentMedia)
+app.register(routeUpdateAssessmentMedia)
 
 app.listen({ port: env.PORT })

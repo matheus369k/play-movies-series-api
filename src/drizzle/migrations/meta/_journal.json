@@ -22,6 +22,20 @@
       "when": 1755376312950,
       "tag": "0002_flippant_photon",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755382577256,
+      "tag": "0003_clumsy_mandrill",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1755383093048,
+      "tag": "0004_cheerful_photon",
+      "breakpoints": true
     }
   ]
 }

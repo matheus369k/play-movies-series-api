@@ -1,0 +1,1 @@
+ALTER TABLE "assessment_media" ADD COLUMN "unlike" boolean;
