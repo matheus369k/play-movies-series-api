@@ -90,6 +90,7 @@ JWT_SECRET_KEY=8b09ede2-c721-48b0-9f37-d542a55f378b
 // Opcional
 # Server
 PORT=3333
+HOST=0.0.0.0
 WEB_URL=http://localhost:3000
 ```
 

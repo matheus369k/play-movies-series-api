@@ -61,4 +61,4 @@ app.register(routeCreateAssessmentMedia)
 app.register(routeGetAssessmentMedia)
 app.register(routeUpdateAssessmentMedia)
 
-app.listen({ port: env.PORT })
+app.listen({ port: env.PORT, host: env.HOST })
